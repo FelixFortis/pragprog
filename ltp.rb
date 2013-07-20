@@ -332,8 +332,6 @@ puts english_number(999999)
 puts english_number(1000000000000)
 puts english_number(109238745102938560129834709285360238475982374561034)
 
-=end
-
 def english_number number
   if number < 0
     return 'Please only enter positive numbers'
@@ -437,3 +435,42 @@ def bottles_of_beer num
   puts "SHIT SON, all those bottles of beer are GONE!"
 end
 puts bottles_of_beer 9999
+
+require 'yaml'
+test_arr = [['steel','buns','mcstallion'],['is','the','best'],['so','shut','up'],[true,false],[123,321],[[123, true],[321,false,nil]]]
+test_str = test_arr.to_yaml
+filename = 'yamltest.txt'
+File.open filename, 'w' do |f|
+  f.write test_str
+end
+read_str = File.read filename
+
+read_arr = YAML::load read_str
+
+puts (read_str == test_str)
+puts (read_arr == test_arr)
+puts read_str
+print read_str
+puts read_arr
+print read_arr
+
+=end
+
+Dir.chdir 'C:/Development/Ruby/games_and_learning/pragprog/delete_me'
+
+text_old = Dir['C:/Development/Ruby/games_and_learning/pragprog/*Document.txt']
+
+puts 'Batch name?'
+batch_name = gets.chomp
+puts
+print "Now moving #{text_old.length} files:"
+file_num = 1
+
+text_old.each do |txt_doc|
+  print '.'
+  new_name = "#{batch_name} - #{file_num}.txt"
+  File.rename txt_doc, new_name unless File.exist?("#{batch_name} - #{file_num}.txt")
+  file_num = file_num+1
+end
+puts
+puts 'Finished, you legend'
