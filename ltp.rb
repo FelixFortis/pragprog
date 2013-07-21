@@ -478,7 +478,7 @@ def random_playlist
   playlist_name = gets.chomp
   filename = "#{playlist_name}.m3u"
 
-  Dir.chdir('G:/Music/Playlists')
+  Dir.chdir('C:/Development/Ruby/games_and_learning/pragprog/challenge_output')
 
   all_music = Dir['G:/Music/**/*.mp3']
 
@@ -496,3 +496,4 @@ end
 random_playlist
 
 =end
+
