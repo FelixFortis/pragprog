@@ -454,8 +454,6 @@ print read_str
 puts read_arr
 print read_arr
 
-=end
-
 Dir.chdir 'C:/Development/Ruby/games_and_learning/pragprog/delete_me'
 
 text_old = Dir['C:/Development/Ruby/games_and_learning/pragprog/*Document.txt']
@@ -474,3 +472,27 @@ text_old.each do |txt_doc|
 end
 puts
 puts 'Finished, you legend'
+
+def random_playlist
+  puts "What would you like to call this playlist?"
+  playlist_name = gets.chomp
+  filename = "#{playlist_name}.m3u"
+
+  Dir.chdir('G:/Music/Playlists')
+
+  all_music = Dir['G:/Music/**/*.mp3']
+
+  File.open filename, 'w' do |f|
+    buns = 100
+    while buns > 0
+      song = "#{all_music[rand(all_music.length)]}\n"
+      f.write song
+      buns = buns - 1
+    end
+  end
+
+  puts 'All done, you handsome bastard!'
+end
+random_playlist
+
+=end
