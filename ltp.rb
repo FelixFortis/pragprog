@@ -495,5 +495,46 @@ def random_playlist
 end
 random_playlist
 
+def shuffled_playlist file_arr
+  file_arr = file_arr.sort
+  len = file_arr.length
+
+  2.times do
+    l_index = 0
+    r_index = len/2
+    shuff = []
+
+    while shuff.length < len
+      if shuff.length%2 == 0
+        shuff << file_arr[r_index]
+        r_index = r_index + 1
+      else
+        shuff << file_arr[l_index]
+        l_index = l_index + 1
+      end
+    end
+    file_arr = shuff
+  end
+
+  arr = []
+  cut = rand(len)
+  idx = 0
+
+  while idx < len
+    arr << file_arr[(idx+cut)%len]
+    idx = idx + 1
+  end
+
+  arr
+end
+
+buns = ["chicken","2","true","1.85","false","soup","12","13","is","the","best"]
+puts shuffled_playlist buns
+
+my_birthdate = Time.local(1986,1,11,02,00)
+turning_one_billion_seconds_old = my_birthdate + 1000000000
+puts turning_one_billion_seconds_old
+
 =end
+
 
