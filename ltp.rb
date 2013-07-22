@@ -537,4 +537,13 @@ puts turning_one_billion_seconds_old
 
 =end
 
-
+def spank_it
+  puts "What year were you born in?"
+  reply = gets.chomp
+  year = Time.local(reply.to_i)
+  spanks = ((Time.new - year)/31557600).to_i
+  spanks.times do
+    puts "SPANK!"
+  end
+end
+puts spank_it
