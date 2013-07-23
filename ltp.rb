@@ -535,8 +535,6 @@ my_birthdate = Time.local(1986,1,11,02,00)
 turning_one_billion_seconds_old = my_birthdate + 1000000000
 puts turning_one_billion_seconds_old
 
-=end
-
 def spank_it
   puts "What year were you born in?"
   reply = gets.chomp
@@ -547,3 +545,19 @@ def spank_it
   end
 end
 puts spank_it
+
+=end
+
+def roman_to_english
+  puts "Gimme a Roman number to convert, it'll be fun!"
+  rom_num = gets.chomp.upcase.split
+  valid_num = false
+  while valid_num == false
+    if #not valid roman numeral
+      puts "You gotta give me valid Roman numerals or this ain't gonna work!"
+      rom_num = gets.chomp.upcase.split
+    else
+      valid_num = true
+    end
+  end
+end
