@@ -550,14 +550,55 @@ puts spank_it
 
 def roman_to_english
   puts "Gimme a Roman number to convert, it'll be fun!"
-  rom_num = gets.chomp.upcase.split
+  rom_num = gets.chomp
+  rom_num = rom_num.gsub(/[ix]/,"9")
+  rom_num = rom_num.gsub(/[iv]/,"4")
+  rom_num = rom_num.upcase.split("")
   valid_num = false
   while valid_num == false
-    if #not valid roman numeral
-      puts "You gotta give me valid Roman numerals or this ain't gonna work!"
-      rom_num = gets.chomp.upcase.split
-    else
-      valid_num = true
+    rom_num.each do |chr| #check if valid
+      if (chr != "M" && chr != "D" && chr != "C" && chr != "L" && chr != "X" && chr != "V" && chr != "I" && chr != "9" && chr != "4")
+        puts "You gotta give me valid Roman numerals or this ain't gonna work!"
+        rom_num = gets.chomp.upcase.split
+      else
+        valid_num = true
+      end
     end
   end
+  arr = []
+  eng_num = 0
+  rom_num.each do |chr|
+    if chr == "M"
+      arr << 1000
+    end
+    if chr == "D"
+      arr << 500
+    end
+    if chr == "C"
+      arr << 100
+    end
+    if chr == "L"
+      arr << 50
+    end
+    if chr == "X"
+      arr << 10
+    end
+    if chr == "V"
+      arr << 5
+    end
+    if chr == "I"
+      arr << 1
+    end
+    if chr == "9"
+      arr << 9
+    end
+    if chr == "4"
+      arr << 4
+    end
+  end
+  arr.each do |num|
+    eng_num = eng_num + num
+  end
+  puts eng_num
 end
+roman_to_english
