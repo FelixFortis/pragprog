@@ -478,7 +478,7 @@ def random_playlist
   playlist_name = gets.chomp
   filename = "#{playlist_name}.m3u"
 
-  Dir.chdir('C:/Development/Ruby/games_and_learning/pragprog/challenge_output')
+  Dir.chdir('C:/Development/Ruby/games_and_learning/pragprog/challenge_assets')
 
   all_music = Dir['G:/Music/**/*.mp3']
 
@@ -546,8 +546,6 @@ def spank_it
 end
 puts spank_it
 
-=end
-
 def roman_to_english
   puts "Gimme a Roman number to convert, it'll be fun!"
   rom_num = gets.chomp
@@ -602,3 +600,18 @@ def roman_to_english
   puts eng_num
 end
 roman_to_english
+
+=end
+
+def birthday_helper
+  Dir.chdir('C:/Development/Ruby/games_and_learning/pragprog/challenge_assets')
+
+  filename = "birthdays.txt"
+
+  File.open filename, 'r' do |f|
+    buns ={}
+    f.each_line do |line|
+      #add name as buns value and date as buns key
+    end
+  end
+end
