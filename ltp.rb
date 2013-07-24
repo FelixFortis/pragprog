@@ -551,8 +551,8 @@ puts spank_it
 def roman_to_english
   puts "Gimme a Roman number to convert, it'll be fun!"
   rom_num = gets.chomp
-  rom_num = rom_num.gsub(/[ix]/,"9")
-  rom_num = rom_num.gsub(/[iv]/,"4")
+  rom_num = rom_num.gsub(/(ix)/,"9")
+  rom_num = rom_num.gsub(/(iv)/,"4")
   rom_num = rom_num.upcase.split("")
   valid_num = false
   while valid_num == false
