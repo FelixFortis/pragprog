@@ -604,14 +604,29 @@ roman_to_english
 =end
 
 def birthday_helper
+  birth_dates = {}
   Dir.chdir('C:/Development/Ruby/games_and_learning/pragprog/challenge_assets')
-
-  filename = "birthdays.txt"
-
-  File.open filename, 'r' do |f|
-    buns ={}
-    f.each_line do |line|
-      #add name as buns value and date as buns key
+  File.read('birthdays.txt').each_line do |line|
+    line = line.chomp
+    first_comma = 0
+    while line[first_comma].chr != ',' && first_comma < line.length
+      first_comma = first_comma + 1
     end
+
+    name = line[0..(first_comma -1)]
+    date = line[-12..-1]
+
+    birth_dates[name] = date
+  end
+
+  puts "Who's birthday would you like to know?"
+  request = gets.chomp
+  response = birth_dates[request]
+
+  if response == nil
+    puts "Don't that person. They're probably important enough to remember yourelf..."
+  else
+    puts "#{request}'s birthday is on #{response[0..5]} of this year, lucky number #{2013 - response[-4..-1].to_i}!"
   end
 end
+birthday_helper
