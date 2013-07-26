@@ -601,8 +601,6 @@ def roman_to_english
 end
 roman_to_english
 
-=end
-
 def birthday_helper
   birth_dates = {}
   Dir.chdir('C:/Development/Ruby/games_and_learning/pragprog/challenge_assets')
@@ -630,3 +628,5 @@ def birthday_helper
   end
 end
 birthday_helper
+
+=end
