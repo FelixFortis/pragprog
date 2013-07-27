@@ -629,4 +629,139 @@ def birthday_helper
 end
 birthday_helper
 
+class OrangeTree
+  def initialize
+    @height = 0.25
+    @age = 0
+    @orange_count = 0
+  end
+
+  def count_oranges
+    if @age < 5
+      puts "Your orange tree is still too young to bear fruit."
+    elsif @age > 50
+      puts "Your orange tree in now too old to bear fruit."
+    else
+      puts "Your orange tree has #{@orange_count} oranges right now."
+    end
+  end
+
+  def pick_an_orange
+    if @orange_count > 0
+      puts "You picked an orange, and it was yummy yummy in your tummy!"
+      @orange_count = @orange_count - 1
+    else
+      puts "There aren't any oranges to pick!"
+    end
+  end
+
+  def height
+    puts "Your orange tree is #{@height}m tall."
+  end
+
+  def check_age
+    puts "Your orange tree is #{@age} years old."
+  end
+
+  def done_for_the_year
+    one_year_passes 1
+  end
+  def back_in_5
+    one_year_passes 5
+  end
+
+  private
+
+  def one_year_passes num
+    if num == 5
+      puts "Five years pass..."
+      if @age < 70
+        @age = @age + 5
+      else
+        puts "Your orange tree died from old age. Hooray!"
+        exit
+      end
+      if @height < 3.0
+        @height = @height + 1.25
+      else
+        @height = 3.0
+      end
+    else
+      puts "One year passes..."
+      if @age < 70
+        @age = @age + 1
+      else
+        puts "Your orange tree died from old age. Hooray!"
+        exit
+      end
+      if @height < 3.0
+        @height = @height + 0.25
+      else
+        @height = 3.0
+      end
+    end
+    if @age >= 5 && @age <= 15
+      @orange_count = rand(5..10)
+    elsif @age >= 16 && @age <= 30
+      @orange_count = rand(15..20)
+    elsif @age >= 31 && @age <= 40
+      @orange_count = rand(19..35)
+    elsif @age >= 41 && @age <= 50
+      @orange_count = rand(15..25)
+    elsif @age > 50
+      @orange_count = 0
+    end
+
+  end
+end
+
+ot = OrangeTree.new
+ot.count_oranges
+ot.height
+ot.check_age
+ot.pick_an_orange
+ot.back_in_5
+ot.count_oranges
+ot.check_age
+ot.height
+ot.pick_an_orange
+ot.count_oranges
+ot.check_age
+ot.back_in_5
+ot.back_in_5
+ot.back_in_5
+ot.back_in_5
+ot.pick_an_orange
+ot.count_oranges
+ot.height
+ot.check_age
+ot.pick_an_orange
+ot.count_oranges
+ot.done_for_the_year
+ot.check_age
+ot.height
+ot.count_oranges
+ot.pick_an_orange
+ot.count_oranges
+ot.back_in_5
+ot.back_in_5
+ot.back_in_5
+ot.back_in_5
+ot.back_in_5
+ot.back_in_5
+ot.back_in_5
+ot.back_in_5
+ot.back_in_5
+ot.back_in_5
+ot.back_in_5
+ot.back_in_5
+ot.back_in_5
+ot.back_in_5
+ot.back_in_5
+ot.check_age
+ot.height
+ot.count_oranges
+ot.pick_an_orange
+ot.count_oranges
+
 =end
