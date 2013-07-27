@@ -622,7 +622,7 @@ def birthday_helper
   response = birth_dates[request]
 
   if response == nil
-    puts "Don't that person. They're probably important enough to remember yourself..."
+    puts "Don't know that person. They're probably important enough to remember yourself..."
   else
     puts "#{request}'s birthday is on #{response[0..5]} of this year, lucky number #{2013 - response[-4..-1].to_i}!"
   end
