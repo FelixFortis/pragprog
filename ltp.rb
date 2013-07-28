@@ -764,4 +764,131 @@ ot.count_oranges
 ot.pick_an_orange
 ot.count_oranges
 
+class Dragon
+  def initialize
+    puts "Please choose a name for your new dragon."
+    @name = gets.chomp
+    @asleep = false
+    @stuff_in_belly = 10
+    @stuff_in_intestines = 0
+    puts "#{@name} is born. Happy birthday, #{@name}!"
+    action
+  end
+
+  def action
+    puts "What would you like to do with #{@name}? (feed, walk, put to bed, toss, rock)"
+    command = gets.chomp.downcase
+    if command == "feed"
+      feed
+    elsif command == "walk"
+      walk
+    elsif command == "put to bed"
+      put_to_bed
+    elsif command == "toss"
+      toss
+    elsif command == "rock"
+      rock
+    else
+      puts "I don't know that command"
+      action
+    end
+  end
+
+  def feed
+    puts "You fed #{@name}. Om nom nom!"
+    @stuff_in_belly = 10
+    passage_of_time
+    action
+  end
+
+  def walk
+    puts "You took #{@name} for a walk. He had an enormous poo."
+    @stuff_in_intestines = 0
+    passage_of_time
+    action
+  end
+
+  def put_to_bed
+    puts "You put #{@name} to bed."
+    @asleep = true
+    3.times do
+      if @asleep
+        puts "#{@name} snores softly, filling the room with smoke."
+        passage_of_time
+      end
+    end
+    if @asleep
+      @asleep = false
+      puts "#{@name} wakes up, has a big yawn and looks groggily up at you."
+    end
+    action
+  end
+
+  def toss
+    puts "You toss #{@name} high into the air and catch him."
+    puts "#{@name} giggles happily and singes your eyebrows."
+    passage_of_time
+    action
+  end
+
+  def rock
+    puts "You rock #{@name} gently."
+    @asleep = true
+    puts "#{@name} dozes off briefly..."
+    passage_of_time
+    if @asleep
+      @asleep = false
+      puts "... but wakes when you stop."
+    end
+    action
+  end
+
+  private
+
+  def hungry?
+    @stuff_in_belly <= 2
+  end
+
+  def poopy?
+    @stuff_in_intestines >= 8
+  end
+
+  def passage_of_time
+    if @stuff_in_belly > 0
+      @stuff_in_belly = @stuff_in_belly - 1
+      @stuff_in_intestines = @stuff_in_intestines + 1
+    else
+      if @asleep
+        @asleep = false
+        puts "#{@name} wakes up suddenly!"
+      end
+      puts "#{@name} is starving! In desperation, he ate you and everyone you ever loved!"
+      exit
+    end
+
+    if @stuff_in_intestines >= 10
+      @stuff_in_intestines = 0
+      puts "#{@name} has a mighty poo, filling your house!"
+    end
+
+    if hungry?
+      if @asleep
+        @asleep = false
+        puts "#{@name} wakes up suddenly!"
+      end
+      puts "#{@name}'s stomach grumbles loudly..."
+    end
+
+    if poopy?
+      if @asleep
+        @asleep = false
+        puts "#{@name} wakes up suddenly!"
+      end
+      puts "#{@name} does the toilet dance..."
+    end
+  end
+end
+
+Dragon.new
+
 =end
