@@ -892,3 +892,31 @@ end
 Dragon.new
 
 =end
+
+def profile block_desc, &block
+  profiling = false
+
+  if profiling
+    start_time = Time.new
+    block.call
+    run_time = Time.new - start_time
+    puts "#{block_desc} took #{run_time} seconds to complete"
+  else
+    block.call
+  end
+end
+
+profile '25000 doublings' do
+  num = 1
+  25000.times do
+    num = num + num
+  end
+  puts "#{num.to_s.length} digits"
+end
+
+profile 'count to one million' do
+  num = 1
+  1000000.times do
+    num = num + 1
+  end
+end
