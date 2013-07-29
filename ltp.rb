@@ -936,19 +936,29 @@ grandfather_clock do
   puts 'DING DONG!'
 end
 
+=end
+
+$nesting = 0
+
 def log description, &block
-  puts "Beggining #{description}..."
+  prefix = "  "*$nesting
+
+  puts prefix + "Beggining #{description}..."
+  $nesting = $nesting + 1
   buns = block.call
-  puts "Ending #{description}...returning: " + buns.to_s
+  $nesting = $nesting - 1
+  puts prefix + "Ending #{description}...returning: " + buns.to_s
 end
 
 log 'outer block' do
-  log 'feathers' do
-    puts "SO MANY FEATHERS!"*2
+  log 'feather keeper' do
+    log 'feathers' do
+      "SO MANY FEATHERS!"*2
+    end
   end
-  log 'buns' do
-    32*2
+  log 'buns keeper' do
+    log 'buns' do
+      32*2
+    end
   end
 end
-
-=end
