@@ -891,8 +891,6 @@ end
 
 Dragon.new
 
-=end
-
 def profile block_desc, &block
   profiling = false
 
@@ -920,3 +918,37 @@ profile 'count to one million' do
     num = num + 1
   end
 end
+
+def grandfather_clock &chime
+  time = Time.new.to_a[2]  # could also use Time.new.hour (returns 0-23 so be careful!)
+  if time > 12
+    time = time - 12
+  end
+  if time == 0
+    time = 12
+  end
+  time.times do
+    chime.call
+  end
+end
+
+grandfather_clock do
+  puts 'DING DONG!'
+end
+
+def log description, &block
+  puts "Beggining #{description}..."
+  buns = block.call
+  puts "Ending #{description}...returning: " + buns.to_s
+end
+
+log 'outer block' do
+  log 'feathers' do
+    puts "SO MANY FEATHERS!"*2
+  end
+  log 'buns' do
+    32*2
+  end
+end
+
+=end
